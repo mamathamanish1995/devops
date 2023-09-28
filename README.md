@@ -14,4 +14,6 @@ git branch mamatha {create branch}
 git switch mamatha{ branch switch}
 git push -u origin mamatha{ git branch push the local to git hub}
 note "any changes in local add commit compulsory"
+yum install gitk {solve merge conflict}
+for i in linux docker ansible kubernetes terraform jenkins; do mkdir $i && touch $i/README.md; done
 
