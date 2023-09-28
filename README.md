@@ -13,5 +13,5 @@ git branch {check branch chmod}
 git branch mamatha {create branch}
 git switch mamatha{ branch switch}
 git push -u origin mamatha{ git branch push the local to git hub}
-
+note "any changes in local add commit compulsory"
 
