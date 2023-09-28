@@ -1,0 +1,115 @@
+Git, the word, originated from a British English slang that means a stupid or unpleasant person. Well, this ain’t the kind of Git we’re going to talk about today…
+
+If you’re completely new to Git, this will help you get started with Git, understanding what Git is meant for and some fundamental concepts you need to understand about Git. I started with Git a few years ago, and in all honesty I had no idea what Git was for.
+
+I came across Git when I finally completed my NodeJS tutorial and decided to host an app on Heroku. I created a free account on Heroku and when I got to deploy, there were three options: Use Heroku cli, GitHub or Dropbox. Since I had come accross GitHub earlier, I chose it automatically. So I created an account and followed the instructions on how to upload a project into a repository. These instructions were merely followed without any knowledge to what I was doing, I just knew what I wanted to achieve and all I knew was “follow the instructions until you get to a point where it doesn’t work”.
+
+To cut the long story short, it worked. And with that success, I challenged myself to understand this tool that had just gotten me to upload my first ever project to go live. I was ecstatic. It took me a long time to go through the Git docs, but in this article, it will take you less than 20 minutes to understand the basics of Git. This is not a full, hand’s on course. I might write a series about Git as a friend requested me to, but in this particular article, I’ll just get you started on what Git is and why you need it.
+What is Git?
+
+Git is a free and open source distributed version control system. Git’s purpose is to keep track of projects and files as they change over time with manipulations happening from different users. Git stores information about the project’s progress on a repository. A repository has commits to the project or a set of references to the commits called heads. All this information is stored in the same folder as the project in a sub-folder called .git and will mostly be hidden by default in most systems.
+
+So basically. Git keeps track of the changes a couple of people make on a single project and then merges the code where people have worked on different parts into one project. This way, when someone introduces a bug, you can track down the code that introduced the bug by going through the commits. Commits must be made to a project to tell git that you’re satisfied with the changes you’ve made and want to commit the changes into the main branch called master by default.
+
+You can then upload the code to GitHub or BitBucket where authorised users can either view, pull the code or push changes.
+
+Getting started.
+
+To get started with Git, you need to download it to your machine. Head over to https://git-scm.com/ and download the version most compatibe with your system.
+
+During the installation of Git, make sure you choose to run Git on the normal console window as well, this will enable you to run Git on your command prompt using the git command.
+
+Once installed, open Git bash and create a working folder where you’ll test out your project and keep track of changes. Once you “cd” into the working folder, create a file and add random code to it. In my example I’ll create a file called app.js and add the following lines of code.
+
+function sayHi(name) {
+ return "Hello " + name + "!";
+}console.log(sayHi("Onejohi"));
+
+Initialize a git repository.
+
+Every change you make is tracked in a repository, so to use git this will be the first thing you’ll do. To initialize a git repository, use this command while inside the working folder.
+
+git init
+
+This will create the hidden git folder as you can see in the screenshot of my explorer.
+
+Committing changes.
+
+To keep track of you changes, you can make changes to your code like add an extra statement or function. Assume that equivalent to adding around 600 lines of code to add a particular feature on a project like storing some data in localStorage or IndexedDB and manipulating it to fulfil a particular purpose. To keep track of when or who added this feature, you have to add changes to an index then when satisfied with the new lines, you commit the changes from the index to the main branch. Think of the index like a platform that keeps track of how far you’ve gone before adding the incrementing lines of code collectively to the main project. To add files to an index after making changes use this command.
+
+git add app.js
+
+The app.js is the file you want to add. To add multiple files, replace the filename with a period ( . ) to add all files.
+
+When satisfied with adding a couple of changes to your index, it’s high time we commit our changes to the master branch. To ensure you have the correct files on the stage, use this command to check what files are on the stage.
+
+git status
+
+The files with the green font are files that have been successfully added to the stage. The ones marked with red are the ones within the project but haven’t been added to the stage. This means you can have three files, modify all three but commit the changes you’ve made to only one of those files. Your Git bash should look like this.
+
+To commit the changes to master, use the following command.
+
+git commit -m "This is the commit message"
+
+The -m flag specifies that what follows is the commit message. This is a custom message intended to let your future self or other developers what was added in that commit. You can use something like git commit -m “Successfully added a login modal.” to keep track of the things you’ve added to the master branch.
+
+Going through your history.
+
+Let’s say it’s been months since you worked on a particular project but used Git to keep track of it’s progress. You can successfully go through the history by using the command git log to view your commit history. Your Git bash should look something like this…
+
+Which now reminds me that you’ll be prompted to add your personal details before making a commit. Bash will automatically give you the instructions as to how to configure this information, it’s really self explanatory so I don’t even have to explain how that works.
+
+Uploading your code to GitHub.
+
+To share your code so as it can be accessible online, you can upload it to GitHub or BitBucket. As a tip to NodeJS developers, please do not upload your node_modules folder. This folder mostly is heavy and unnecessary. These dependencies that are installed into the node_modules folder are contained in the package.json file. It is much easier to pull your code to a different machine then perform an npm install command to install the modules listed in the dependencies property.
+
+Git has a default file where you can list out folders and files you wouldn’t want to upload called the .gitignore file. All these files listed in this .gitignore file are totally ignored when items are being uploaded. You can add the file names simply by using the echo command in your terminal as shown below.
+
+echo node_modules >> .gitignore
+
+Once you sign up for any of these two services, select the option “new repository” as shown in the screenshot of my GitHub account.
+
+Give the repository a name, and a description if you want to describe your project. In GitHub, it costs around $7 a month to keep your repositories private but in BitBucket, you can have private repositories for free. Private repositories cannot be pulled without express authorization from the owner while public repositories are free to be pulled by anyone.
+
+You can initialize your project with a .README file that will be displayed right below your project home directory. The .readme file can contain more information about your project, how to use it, progress and any other kind of information that cannot fit in the description.
+
+To link your remote git repository to your online repository on GitHub or BitBucket, you attach an origin to your remote git project to specify the origin will be hosted online. You’ll use this command.
+
+git remote add origin https://github.com/itonnie/repositoryname.git
+
+To quickly add origins, just remember your GitHub or BitBucket username, add a slash and the repository name of the repository you created. When naming a repository, don’t add the .git, it’s added by default when you simply add the name like repositoryname.
+
+To push the code to your repo, use the following command.
+
+git push -u origin master
+
+This will push your app to the master branch…
+
+To pull the code from a different machine, you’ll initialize an empty git repository then use the following command to pull the repo.
+
+git pull https://github.com/itonnie/repositoryname.git
+
+If there are any dependencies listed in a package.json file, all you’ll have to do then is npm install and your project is good to go.
+
+Using this technique, you can work on a project at work and continue to add some features at home using different machines. You wouldn’t need to carry your machine everywhere or your code in a flash drive.
+Branching.
+
+These is a little advanced for basic but I feel it lies on a thin line between basic and advanced. Let’s assume you’re working on a huge project and want to add an experimental feature. You’re not sure if it’ll work or will be accepted, you can branch off your main tree by creating a new branch and working on that branch instead. Think of it hypothetically as how a tree has branches, but when you branch off from the main branch however, you can be satisfied with the experimental features and decide to merge the two branches. In the image above, the two green dots branch off the purple branch and and when satisfied with the features, it’s merged back into the purple branch.
+
+You can create as many branches as you like, to create a branch, use the following command.
+
+git branch branchname
+
+To view see the list of branches the project has, use the following command.
+
+git branch --list
+
+The branch in green and marked with an asterisk is the the branch you’re currently working on. You can switch between branches, commit different layers of code changes and log the history of either. To switch between branches, use the following command.
+
+git checkout branchname
+
+Your Git bash should look similar to mine below.
+
+With this basic knowledge about Git, you can now use it to share code with a team of developers, keep track of their changes, commit changes to your project, authorize contributors, create experimental features with branches, merge code, pull code for templates and code snippets. These are very useful functionalities in developers day to day lives. You may need a particular form of functionality and a someone helpful somewhere has posted the code you need on GitHub or BitBucked. You can get these helpful code snippets by forking them on GitHub.
+
+Follow me on GitHub to see some projects I work on, code snippets I share and a lot more. GitHub is like Facebook for developers, my username is itonnie. Enough about marketing myself, thank you for going through this article. I hope you can now explore the benefits of Git and GitHub. For more info, questions or complements, leave a comment on the comment section below!😁😁
