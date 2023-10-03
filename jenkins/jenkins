@@ -10,3 +10,4 @@ sudo systemctl start jenkins
 sudo systemctl status jenkins
 cd /  amazon-linux-extras
 amazon-linux-extras install java17-open-jdk
+without keypair -
