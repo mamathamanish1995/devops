@@ -40,7 +40,7 @@ pipeline{
                  steps{
                     sh '''
                     echo "process command"
-                    ps -ef | head
+                    ps -ef | tail -5
                     '''
             
                 }
