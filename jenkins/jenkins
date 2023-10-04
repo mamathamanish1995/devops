@@ -10,4 +10,9 @@ sudo systemctl start jenkins
 sudo systemctl status jenkins
 cd /  amazon-linux-extras
 amazon-linux-extras install java17-open-jdk
-without keypair -
+{without keypair -#!/bin/bash
+sudo sed -i '$/#PermitRootLogin yes/PermitRootLogin yes/' /etc/ssh/sshd_config
+sudo sed -i '$/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+sudo service sshd restart
+sudo echo 'root:mamatha' | chpasswd
+hostname jenkins-master}
