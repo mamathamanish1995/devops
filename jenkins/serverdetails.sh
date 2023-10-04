@@ -15,7 +15,7 @@ pipeline{
                  steps{
                      sh '''
                      echo "MEMORY DETAILS"
-                     free
+                     du -sch *
                      '''                
                 }
             }
